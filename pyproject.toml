@@ -3,4 +3,16 @@ name = "qwenasr-inference"
 version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "fastapi[standard]>=0.134.0",
+    "qwen-asr>=0.0.6",
+]
+
+[dependency-groups]
+dev = [
+    "poethepoet>=0.42.1",
+]
+
+[tool.poe.tasks]
+dev = "uvicorn app.main:app --reload --host 0.0.0.0 --port 8000 --log-level debug"
+serve = "uvicorn app.main:app --host 0.0.0.0 --port 8000"
