@@ -1,0 +1,11 @@
+qwenasr-inference
+Copyright 2026 James Ding
+
+This product includes the following third-party components:
+
+Qwen3-ASR-1.7B - Copyright (c) Alibaba Cloud. Apache License 2.0.
+Qwen3-ForcedAligner-0.6B - Copyright (c) Alibaba Cloud. Apache License 2.0.
+qwen-asr - Copyright (c) Alibaba Cloud. Apache License 2.0.
+
+The Docker image is based on nvidia/cuda, subject to the NVIDIA Deep Learning
+Container License: https://developer.nvidia.com/deep-learning-containers-license
