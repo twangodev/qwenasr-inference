@@ -10,8 +10,8 @@ RUN uv sync --frozen --no-dev --no-install-project
 COPY . .
 RUN uv sync --frozen --no-dev
 
-RUN uv run huggingface-cli download Qwen/Qwen3-ASR-1.7B && \
-    uv run huggingface-cli download Qwen/Qwen3-ForcedAligner-0.6B
+RUN uv run hf download Qwen/Qwen3-ASR-1.7B && \
+    uv run hf download Qwen/Qwen3-ForcedAligner-0.6B
 
 FROM nvidia/cuda:12.8.1-runtime-ubuntu24.04
 
