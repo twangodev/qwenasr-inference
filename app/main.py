@@ -19,6 +19,7 @@ async def lifespan(app: FastAPI):
         forced_aligner_kwargs=dict(device_map=DEVICE, dtype=DTYPE),
         device_map=DEVICE,
         dtype=DTYPE,
+        max_new_tokens=2048,
     )
     yield
 
