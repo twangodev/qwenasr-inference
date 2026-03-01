@@ -1,20 +1,14 @@
 import pytest
 from fastapi.testclient import TestClient
 
+from app.main import app
 from tests.conftest import JFK_WAV
 
 
 @pytest.fixture(scope="module")
 def real_client():
-    from qwen_asr import Qwen3ASRModel
-
-    from app.main import app
-
-    app.state.model = Qwen3ASRModel.from_pretrained(
-        "Qwen/Qwen3-ASR-1.7B",
-        forced_aligner="Qwen/Qwen3-ForcedAligner-0.6B",
-    )
-    return TestClient(app)
+    with TestClient(app) as client:
+        yield client
 
 
 def test_transcribe_jfk(real_client):
