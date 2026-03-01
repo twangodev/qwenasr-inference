@@ -11,6 +11,8 @@ async def lifespan(app: FastAPI):
     app.state.model = Qwen3ASRModel.from_pretrained(
         "Qwen/Qwen3-ASR-1.7B",
         forced_aligner="Qwen/Qwen3-ForcedAligner-0.6B",
+        forced_aligner_kwargs=dict(device_map="auto"),
+        device_map="auto",
     )
     yield
 
