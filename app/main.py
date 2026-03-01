@@ -4,6 +4,7 @@ import torch
 from fastapi import FastAPI
 from qwen_asr import Qwen3ASRModel
 
+from . import __version__
 from .routes import router
 
 DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -22,5 +23,10 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+    title="Qwen ASR Inference",
+    description="Speech recognition and forced alignment using Qwen3-ASR and Qwen3-ForcedAligner.",
+    version=__version__,
+    lifespan=lifespan,
+)
 app.include_router(router)
