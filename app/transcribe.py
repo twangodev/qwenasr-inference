@@ -1,17 +1,21 @@
-from qwen_asr import Qwen3ASRModel, ForcedAligner
+from qwen_asr import Qwen3ASRModel
 
 from .schemas import TranscriptionResponse, WordTimestamp
 
 
-def transcribe(model: Qwen3ASRModel, aligner: ForcedAligner, audio_path: str) -> TranscriptionResponse:
-    result = model.transcribe(audio_path, return_time_stamps=True)
-    text = result["text"]
-    language = result.get("language", "unknown")
-    raw_timestamps = result.get("time_stamps", [])
+def transcribe(model: Qwen3ASRModel, audio_path: str) -> TranscriptionResponse:
+    results = model.transcribe(audio_path, return_time_stamps=True)
+    r = results[0]
 
-    timestamps = [
-        WordTimestamp(text=entry["text"], start_time=entry["start"], end_time=entry["end"])
-        for entry in raw_timestamps
-    ]
+    timestamps = []
+    if r.time_stamps is not None:
+        timestamps = [
+            WordTimestamp(text=item.text, start_time=item.start_time, end_time=item.end_time)
+            for item in r.time_stamps
+        ]
 
-    return TranscriptionResponse(text=text, language=language, timestamps=timestamps)
+    return TranscriptionResponse(
+        text=r.text,
+        language=r.language,
+        timestamps=timestamps,
+    )

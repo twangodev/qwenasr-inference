@@ -19,7 +19,7 @@ async def transcribe_audio(request: Request, file: UploadFile = File(...)):
         tmp.flush()
 
         result = await asyncio.to_thread(
-            transcribe, request.app.state.model, request.app.state.aligner, tmp.name
+            transcribe, request.app.state.model, tmp.name
         )
     return result
 
