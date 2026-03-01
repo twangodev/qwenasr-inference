@@ -10,7 +10,9 @@ def transcribe(model: Qwen3ASRModel, audio_path: str) -> TranscriptionResponse:
     timestamps = []
     if r.time_stamps is not None:
         timestamps = [
-            WordTimestamp(text=item.text, start_time=item.start_time, end_time=item.end_time)
+            WordTimestamp(
+                text=item.text, start_time=item.start_time, end_time=item.end_time
+            )
             for item in r.time_stamps
         ]
 
