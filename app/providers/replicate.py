@@ -1,4 +1,4 @@
-from cog import BasePredictor, Input, Path
+from cog import BasePredictor, Input, Path  # type: ignore[import-not-found]
 
 from app.engine import TranscriptionEngine
 
