@@ -5,21 +5,22 @@ from fastapi import FastAPI
 from qwen_asr import Qwen3ASRModel
 
 from . import __version__
+from .config import settings
 from .routes import router
 
-DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
+DEVICE = settings.device or ("cuda:0" if torch.cuda.is_available() else "cpu")
 DTYPE = torch.bfloat16 if DEVICE != "cpu" else torch.float32
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     app.state.model = Qwen3ASRModel.from_pretrained(
-        "Qwen/Qwen3-ASR-1.7B",
-        forced_aligner="Qwen/Qwen3-ForcedAligner-0.6B",
+        settings.asr_model,
+        forced_aligner=settings.forced_aligner_model,
         forced_aligner_kwargs=dict(device_map=DEVICE, dtype=DTYPE),
         device_map=DEVICE,
         dtype=DTYPE,
-        max_new_tokens=2048,
+        max_new_tokens=settings.max_new_tokens,
     )
     yield
 
