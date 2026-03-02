@@ -1,4 +1,4 @@
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel
 
 
 class WordTimestamp(BaseModel):
@@ -14,11 +14,14 @@ class TranscriptionResponse(BaseModel):
 
 
 class TranscriptionRequest(BaseModel):
-    audio_base64: str | None = None
-    audio_url: str | None = None
+    audio_base64: str
 
-    @model_validator(mode="after")
-    def check_one_source(self):
-        if not self.audio_base64 and not self.audio_url:
-            raise ValueError("Provide either audio_base64 or audio_url")
-        return self
+
+class ForceAlignRequest(BaseModel):
+    audio_base64: str
+    text: str
+    language: str
+
+
+class ForceAlignResponse(BaseModel):
+    timestamps: list[WordTimestamp]

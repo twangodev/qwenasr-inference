@@ -8,11 +8,6 @@ dependencies = [
     "qwen-asr>=0.0.6",
 ]
 
-[project.optional-dependencies]
-runpod = [
-    "runpod>=1.8.1"
-]
-
 [dependency-groups]
 dev = [
     "httpx>=0.28.1",

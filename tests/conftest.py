@@ -4,7 +4,7 @@ from unittest.mock import MagicMock
 import pytest
 from fastapi.testclient import TestClient
 
-from app.schemas import TranscriptionResponse, WordTimestamp
+from app.schemas import ForceAlignResponse, TranscriptionResponse, WordTimestamp
 
 SAMPLES_DIR = Path(__file__).resolve().parent.parent / "samples"
 JFK_WAV = SAMPLES_DIR / "jfk.wav"
@@ -25,6 +25,12 @@ def mock_engine():
         timestamps=[
             WordTimestamp(text="And", start_time=0.0, end_time=0.3),
             WordTimestamp(text="so", start_time=0.3, end_time=0.5),
+        ],
+    )
+    engine.align.return_value = ForceAlignResponse(
+        timestamps=[
+            WordTimestamp(text="hello", start_time=0.0, end_time=0.5),
+            WordTimestamp(text="world", start_time=0.5, end_time=1.0),
         ],
     )
     return engine

@@ -2,7 +2,7 @@ import torch
 from qwen_asr import Qwen3ASRModel
 
 from .config import settings
-from .schemas import TranscriptionResponse, WordTimestamp
+from .schemas import ForceAlignResponse, TranscriptionResponse, WordTimestamp
 
 
 class TranscriptionEngine:
@@ -41,3 +41,13 @@ class TranscriptionEngine:
             language=r.language,
             timestamps=timestamps,
         )
+
+    def align(self, audio_path: str, text: str, language: str) -> ForceAlignResponse:
+        result = self.model.forced_aligner.align(audio_path, text, language)
+        timestamps = [
+            WordTimestamp(
+                text=item.text, start_time=item.start_time, end_time=item.end_time
+            )
+            for item in result
+        ]
+        return ForceAlignResponse(timestamps=timestamps)
