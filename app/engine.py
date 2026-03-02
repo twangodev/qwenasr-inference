@@ -43,11 +43,11 @@ class TranscriptionEngine:
         )
 
     def align(self, audio_path: str, text: str, language: str) -> ForceAlignResponse:
-        result = self.model.forced_aligner.align(audio_path, text, language)
+        results = self.model.forced_aligner.align(audio_path, text, language)
         timestamps = [
             WordTimestamp(
                 text=item.text, start_time=item.start_time, end_time=item.end_time
             )
-            for item in result
+            for item in results[0].items
         ]
         return ForceAlignResponse(timestamps=timestamps)

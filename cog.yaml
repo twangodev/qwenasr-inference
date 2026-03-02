@@ -1,0 +1,7 @@
+build:
+  gpu: true
+  python_version: "3.13"
+  python_packages:
+    - "qwen-asr>=0.0.6"
+    - "pydantic-settings>=2.0.0"
+predict: "app.providers.replicate:Predictor"
