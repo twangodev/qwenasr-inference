@@ -9,7 +9,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-runpod = ["runpod>=1.7.0"]
+runpod = [
+    "runpod>=1.8.1"
+]
 
 [dependency-groups]
 dev = [

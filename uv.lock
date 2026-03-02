@@ -2037,7 +2037,7 @@ dev = [
 requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.134.0" },
     { name = "qwen-asr", specifier = ">=0.0.6" },
-    { name = "runpod", marker = "extra == 'runpod'", specifier = ">=1.7.0" },
+    { name = "runpod", marker = "extra == 'runpod'", specifier = ">=1.8.1" },
 ]
 provides-extras = ["runpod"]
 
