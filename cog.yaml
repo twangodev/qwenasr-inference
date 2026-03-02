@@ -8,4 +8,4 @@ build:
   run:
     - "hf download Qwen/Qwen3-ASR-1.7B"
     - "hf download Qwen/Qwen3-ForcedAligner-0.6B"
-predict: "app.providers.replicate:Predictor"
+predict: "predict.py:Predictor"
