@@ -3,6 +3,7 @@ build:
   python_version: "3.12"
   # keep in sync with pyproject.toml [project.dependencies]
   python_packages:
-    - "qwen-asr>=0.0.6"
+    - "fastapi>=0.100.0"
     - "pydantic-settings>=2.0.0"
+    - "qwen-asr>=0.0.6"
 predict: "predict.py:Predictor"
