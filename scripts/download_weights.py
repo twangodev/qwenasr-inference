@@ -7,9 +7,9 @@ Skips files that are already cached locally.
 
 from huggingface_hub import snapshot_download
 
-from app.config import Settings
+from app.config import settings
 
-MODELS = [Settings.asr_model, Settings.forced_aligner_model]
+MODELS = [settings.asr_model, settings.forced_aligner_model]
 
 
 def main():
