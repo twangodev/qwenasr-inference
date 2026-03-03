@@ -44,4 +44,4 @@ class Predictor(BasePredictor):
                 raise ValueError("'text' is required when mode is 'align'")
             result = self.engine.align(audio_path, text, language)
 
-        return result.model_dump()
+        return result.dict()
