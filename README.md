@@ -1,6 +1,7 @@
 # qwenasr-inference
 
 [![Python](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2Ftwangodev%2Fqwenasr-inference%2Fmain%2Fpyproject.toml)](https://www.python.org/downloads/)
+[![Replicate](https://img.shields.io/badge/replicate-twangodev%2Fqwenasr-%23000000?logo=replicate&logoColor=white)](https://replicate.com/twangodev/qwenasr)
 [![GHCR](https://img.shields.io/badge/ghcr.io-twangodev%2Fqwenasr--inference-blue?logo=github)](https://ghcr.io/twangodev/qwenasr-inference)
 [![License](https://img.shields.io/github/license/twangodev/qwenasr-inference)](LICENSE)
 
