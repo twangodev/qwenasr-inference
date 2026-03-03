@@ -1,10 +1,20 @@
+import os
+
 from cog import BasePredictor, Input, Path  # type: ignore[import-not-found]
 
 from app.engine import TranscriptionEngine
 
+WEIGHTS_DIR = "weights"
+
+
+def use_local_weights():
+    if os.path.isdir(WEIGHTS_DIR):
+        os.environ["HF_HOME"] = WEIGHTS_DIR
+
 
 class Predictor(BasePredictor):
     def setup(self):
+        use_local_weights()
         self.engine = TranscriptionEngine()
         self.engine.load()
 

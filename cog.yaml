@@ -5,7 +5,4 @@ build:
   python_packages:
     - "qwen-asr>=0.0.6"
     - "pydantic-settings>=2.0.0"
-  run:
-    - "hf download Qwen/Qwen3-ASR-1.7B"
-    - "hf download Qwen/Qwen3-ForcedAligner-0.6B"
 predict: "predict.py:Predictor"
