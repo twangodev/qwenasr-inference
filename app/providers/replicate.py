@@ -31,8 +31,21 @@ class Predictor(BasePredictor):
             description="Text to align (required when mode is 'align')",
         ),
         language: str = Input(
-            default="en",
-            description="Language code (used with align mode)",
+            default="English",
+            choices=[
+                "Chinese",
+                "English",
+                "Cantonese",
+                "French",
+                "German",
+                "Italian",
+                "Japanese",
+                "Korean",
+                "Portuguese",
+                "Russian",
+                "Spanish",
+            ],
+            description="Language (used with align mode)",
         ),
     ) -> dict:
         audio_path = str(audio)
