@@ -1,6 +1,6 @@
 build:
   gpu: true
-  python_version: "3.13"
+  python_version: "3.12"
   # keep in sync with pyproject.toml [project.dependencies]
   python_packages:
     - "qwen-asr>=0.0.6"
