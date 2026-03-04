@@ -9,9 +9,10 @@ class TranscriptionEngine:
     def __init__(self):
         self.model: Qwen3ASRModel | None = None
 
-    def load(self):
+    def load(self, dtype: torch.dtype | None = None):
         device = settings.device or ("cuda:0" if torch.cuda.is_available() else "cpu")
-        dtype = torch.bfloat16 if device != "cpu" else torch.float32
+        if dtype is None:
+            dtype = torch.bfloat16 if device != "cpu" else torch.float32
 
         self.model = Qwen3ASRModel.from_pretrained(
             settings.asr_model,

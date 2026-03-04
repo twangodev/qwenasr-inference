@@ -2,6 +2,8 @@ import os
 
 from cog import BasePredictor, Input, Path  # type: ignore[import-not-found]
 
+import torch
+
 from app.engine import TranscriptionEngine
 
 WEIGHTS_DIR = "weights"
@@ -16,7 +18,7 @@ class Predictor(BasePredictor):
     def setup(self):
         use_local_weights()
         self.engine = TranscriptionEngine()
-        self.engine.load()
+        self.engine.load(dtype=torch.float16)
 
     def predict(
         self,
